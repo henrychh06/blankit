@@ -10,8 +10,8 @@ def test_stable_diffusion_v1_5():
     pipe = StableDiffusionPipeline.from_pretrained(model_id,
                                                    # safety_checker=None,
                                                    use_safetensors=True,
-                                                   variant="fp32",
-                                                   torch_dtype=torch.float32,
+                                                   variant="fp16",
+                                                   torch_dtype=torch.float16,
                                                    )
     pipe = pipe.to("cuda")
 
