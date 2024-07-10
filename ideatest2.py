@@ -53,7 +53,7 @@ def generate_image(image_url, prompt, seed=13):
 
 # Parámetros de ejemplo
 image_url = 'https://lh4.googleusercontent.com/proxy/p-1dRttrHDLLjtC8E-V6g9uW5uP3jk6yLPHzozss9csThf62LccKm4wOmof_-N8v5WkxnjK-8gkKefMkE_eFC2q5i-mrl9SVVVSc_aqpWI_gN7IRxwrE2nL0e4T9JRqZq3In'
-prompt = 'A swan in a watterfall, 3d renderized style image, 4k'
+prompt = 'A swan in a dark city street, 3d renderized style image'
 
 # Generar imagen
 controlnet_image = generate_image(image_url, prompt)
