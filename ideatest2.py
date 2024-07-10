@@ -7,7 +7,7 @@ from transparent_background import Remover
 
 def initialize_pipeline(model_id="yahoo-inc/photo-background-generation"):
     pipeline = DiffusionPipeline.from_pretrained(model_id, custom_pipeline=model_id)
-    pipeline = pipeline.to('cpu')
+    pipeline = pipeline.to('cuda')
     return pipeline
 
 def resize_with_padding(img, expected_size):
@@ -34,8 +34,8 @@ def remove_background(img):
 
 def generate_controlnet_image(pipeline, prompt, img, mask, seed, cond_scale=1.0, num_inference_steps=20):
     img = resize_with_padding(img, (512, 512))
-    generator = torch.Generator(device='cpu').manual_seed(seed)
-    with torch.autocast("cpu"):
+    generator = torch.Generator(device='cuda').manual_seed(seed)
+    with torch.autocast("cuda"):
         result = pipeline(
             prompt=prompt, image=img, mask_image=mask, control_image=mask,
             num_images_per_prompt=1, generator=generator,
