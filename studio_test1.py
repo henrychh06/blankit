@@ -10,7 +10,7 @@ import os
 
 app = Sanic("ImageGeneratorApp")
 app.config.CORS_ORIGINS = ["http://35.202.174.150:8001"]
-Extend(app)
+
 
 def initialize_pipeline(model_id="yahoo-inc/photo-background-generation"):
     pipeline = DiffusionPipeline.from_pretrained(model_id, custom_pipeline=model_id)
