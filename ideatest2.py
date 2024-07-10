@@ -32,7 +32,7 @@ def remove_background(img):
     mask = ImageOps.invert(fg_mask)
     return mask
 
-def generate_controlnet_image(pipeline, prompt, img, mask, seed, cond_scale=1.0, num_inference_steps=20):
+def generate_controlnet_image(pipeline, prompt, img, mask, seed, cond_scale=1.0, num_inference_steps=50):
     img = resize_with_padding(img, (512, 512))
     generator = torch.Generator(device='cuda').manual_seed(seed)
     with torch.autocast("cuda"):
@@ -53,8 +53,8 @@ def generate_image(image_url, prompt, seed=13):
 
 # Parámetros de ejemplo
 image_url = 'https://lh4.googleusercontent.com/proxy/p-1dRttrHDLLjtC8E-V6g9uW5uP3jk6yLPHzozss9csThf62LccKm4wOmof_-N8v5WkxnjK-8gkKefMkE_eFC2q5i-mrl9SVVVSc_aqpWI_gN7IRxwrE2nL0e4T9JRqZq3In'
-prompt = 'A dark swan in a bedroom'
+prompt = 'A swan in a watterfall, 3d renderized style image, 4k'
 
 # Generar imagen
 controlnet_image = generate_image(image_url, prompt)
-controlnet_image.save("output1.png")
+controlnet_image.save(f"{prompt}.png")
