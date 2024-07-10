@@ -74,8 +74,8 @@ async def index(request):
 
 @app.route("/generate")
 async def generate(request):
-    prompt = request.args.get('prompt', 'A dark swan in a bedroom')
-    image_url = 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Granja_comary_Cisne_-_Escalavrado_e_Dedo_De_Deus_ao_fundo_-Teres%C3%B3polis.jpg/2560px-Granja_comary_Cisne_-_Escalavrado_e_Dedo_De_Deus_ao_fundo_-Teres%C3%B3polis.jpg'
+    prompt = request.args.get('prompt', 'A swan in a bedroom')
+    image_url = 'https://lh4.googleusercontent.com/proxy/p-1dRttrHDLLjtC8E-V6g9uW5uP3jk6yLPHzozss9csThf62LccKm4wOmof_-N8v5WkxnjK-8gkKefMkE_eFC2q5i-mrl9SVVVSc_aqpWI_gN7IRxwrE2nL0e4T9JRqZq3In'
     controlnet_image = generate_image(image_url, prompt)
 
     # Guardar la imagen generada en un archivo temporal
@@ -99,4 +99,4 @@ async def serve_image(request):
     return await file("/tmp/generated_image.png")
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8000)
+    app.run(host="0.0.0.0", port=8001)
