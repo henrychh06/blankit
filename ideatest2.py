@@ -4,6 +4,10 @@ import requests
 from io import BytesIO
 import torch
 from transparent_background import Remover
+from huggingface_hub import login
+
+huggingface_token = "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"
+login(huggingface_token)
 
 def initialize_pipeline(model_id="yahoo-inc/photo-background-generation"):
     pipeline = DiffusionPipeline.from_pretrained(model_id, custom_pipeline=model_id)
