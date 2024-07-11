@@ -41,7 +41,7 @@ def generate_controlnet_image(pipeline, prompt, img, mask, seed, cond_scale=1.0,
     generator = torch.Generator(device='cuda').manual_seed(seed)
     with torch.autocast("cuda"):
         result = pipeline(
-            prompt=prompt, image=img, mask_image=mask, control_image=mask,
+            prompt=prompt, mask_image=mask, control_image=mask,
             num_images_per_prompt=1, generator=generator,
             num_inference_steps=num_inference_steps, guess_mode=False,
             controlnet_conditioning_scale=cond_scale
