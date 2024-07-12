@@ -61,4 +61,7 @@ control_image = 'https://lh4.googleusercontent.com/proxy/p-1dRttrHDLLjtC8E-V6g9u
 #control_image = load_image("https://huggingface.co/InstantX/SD3-Controlnet-Canny/resolve/main/canny.jpg")
 prompt = "A swan in a futuristic city, 3d, 4k"
 controlnet_image = generate_image(control_image, prompt)
-controlnet_image.save(f"{prompt}.png")
+
+image = pipe(prompt, control_image=controlnet_image ,controlnet_conditioning_scale=0.7).images[0]
+#controlnet_image = generate_image(control_image, prompt)
+image.save(f"{prompt}.png")
