@@ -12,7 +12,7 @@ controlnet = SD3ControlNetModel.from_pretrained("InstantX/SD3-Controlnet-Canny",
 pipe = StableDiffusion3ControlNetPipeline.from_pretrained(
     "stabilityai/stable-diffusion-3-medium-diffusers", controlnet=controlnet, torch_dtype=torch.float16
 )
-pipe.to("cpu")
+pipe.to("cuda")
 
 pipe.enable_model_cpu_offload()
 
