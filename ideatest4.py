@@ -14,6 +14,8 @@ pipe = StableDiffusion3ControlNetPipeline.from_pretrained(
 )
 pipe.to("cuda")
 
+pipe.enable_model_cpu_offload()
+
 def resize_with_padding(img, expected_size):
     img.thumbnail((expected_size[0], expected_size[1]))
     delta_width = expected_size[0] - img.size[0]
