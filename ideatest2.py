@@ -60,5 +60,6 @@ image_url = 'https://lh4.googleusercontent.com/proxy/p-1dRttrHDLLjtC8E-V6g9uW5uP
 prompt = 'A swan in a dark city street, 3d renderized style image'
 
 # Generar imagen
+image = pipe(prompt, control_image=control_image, controlnet_conditioning_scale=0.7).images[0]
 controlnet_image = generate_image(image_url, prompt)
 controlnet_image.save(f"{prompt}.png")
